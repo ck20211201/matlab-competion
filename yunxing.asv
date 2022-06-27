@@ -1,0 +1,22 @@
+clear all;
+clc;
+x0=1;y0=1;
+a1=1.0;
+a2=1.2;
+b1=0.1199;b2=0.13;
+c1=0.14;c2=0.15;
+n=1000;
+t=0:0.01:99;
+for k=1:n
+q(k)=x0;
+b(k)=y0;
+x1=fsolve(@(x) (x0*exp(a1-b1*x0-c1*y0)),0,optimset('Display','off'));
+y1=y0*exp(a2-b2*x0-c2*y0);
+x0=x1;
+y0=y1;
+end
+figure(1);
+plot(t,q,'ro',tt,yy,'b')
+tt=0:0.02:10;
+yy=interp1(t,q,tt,"cubic")
+plot(t,q,'ro',tt,yy,'b')

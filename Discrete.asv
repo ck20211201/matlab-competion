@@ -1,0 +1,18 @@
+x=zeros(1);y=zeros(1);
+a1=0.03;
+a2=0.03;
+b1=0.003;
+b2=0.006;
+c1=0.0015;
+c2=0.003;
+x(1)=0.5;
+y(1)=0.5;
+for n=1:40000
+	x(n+1)=x(n)*exp(a1-b1*x(n)-c1*y(n));
+	y(n+1)=y(n)*exp(a2-b2*x(n)-c2*y(n));
+end
+figure;
+t=1:4000;
+H=plot(t,x,y,'b');%1000
+set(H,'linestyle','none','marker','.','markersize',1)
+xlabel('x');ylabel('y');
